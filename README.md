@@ -7,10 +7,22 @@ Mihomo / Clash.Meta rule-sets для триплейн-инфраструктур
 
 ## Файлы
 
-| Файл | Behavior | Назначение |
-|---|---|---|
-| `reject-telemetry.list` | classical | Блок-лист телеметрии и трекеров (REJECT) |
-| `proxy-chain.list` | classical | Сайты/CDN которые принудительно через прокси |
+| Файл | Behavior | Формат | Назначение |
+|---|---|---|---|
+| `reject-telemetry.list` | classical | text | Блок-лист телеметрии и трекеров (REJECT) |
+| `proxy-chain.list` | classical | text | Сайты/CDN которые принудительно через прокси |
+| `category-porn.yaml` | domain | yaml | Категория adult-сайтов (snapshot из MetaCubeX/meta-rules-dat) |
+
+## Обновление category-porn.yaml
+
+Этот файл — снапшот upstream из `MetaCubeX/meta-rules-dat@meta/geo/geosite/category-porn.yaml`.
+Для синка с upstream (раз в 1-3 месяца):
+
+```bash
+curl -s "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-porn.yaml" \
+  -o category-porn.yaml
+git add category-porn.yaml && git commit -m "Sync category-porn.yaml with MetaCubeX upstream" && git push
+```
 
 ## Использование в Mihomo
 
